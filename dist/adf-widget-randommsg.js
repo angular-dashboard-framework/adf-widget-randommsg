@@ -1,3 +1,4 @@
+(function(window, undefined) {'use strict';
 /*
  * The MIT License
  *
@@ -22,10 +23,10 @@
  * SOFTWARE.
  */
 
-'use strict';
+
 
 angular.module('adf.widget.randommsg', ['adf.provider'])
-  .config(function(dashboardProvider){
+  .config(["dashboardProvider", function(dashboardProvider){
     dashboardProvider
       .widget('randommsg', {
         title: 'Random Message',
@@ -33,7 +34,7 @@ angular.module('adf.widget.randommsg', ['adf.provider'])
         templateUrl: '{widgetsPath}/randommsg/src/view.html',
         controller: 'randommsgCtrl'
       });
-  })
+  }])
   .service('randommsgService', function(){
     // source http://bookriot.com/2012/05/25/the-42-best-lines-from-douglas-adams-the-hitchhikers-guide-to-the-galaxy-series/
     var msgs = [
@@ -94,8 +95,8 @@ angular.module('adf.widget.randommsg', ['adf.provider'])
       }
     };
   })
-  .controller('randommsgCtrl', function($scope, randommsgService){
+  .controller('randommsgCtrl', ["$scope", "randommsgService", function($scope, randommsgService){
     $scope.msg = randommsgService.get();
-  });
+  }]);
 
-angular.module("adf.widget.randommsg").run(["$templateCache", function($templateCache) {$templateCache.put("{widgetsPath}/randommsg/src/view.html","<blockquote><p>{{msg.text}}</p><small>{{msg.author}}</small></blockquote>");}]);
+angular.module("adf.widget.randommsg").run(["$templateCache", function($templateCache) {$templateCache.put("{widgetsPath}/randommsg/src/view.html","<blockquote><p>{{msg.text}}</p><small>{{msg.author}}</small></blockquote>");}]);})(window);
