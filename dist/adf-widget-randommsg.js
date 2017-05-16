@@ -30,7 +30,7 @@ angular.module('adf.widget.randommsg', ['adf.provider'])
     dashboardProvider
       .widget('randommsg', {
         title: 'Random Message',
-        description: 'Display a random quote of Douglas Adams',
+        description: 'Displays a random quote of Douglas Adams',
         templateUrl: '{widgetsPath}/randommsg/src/view.html',
         controller: 'randommsgCtrl'
       });
